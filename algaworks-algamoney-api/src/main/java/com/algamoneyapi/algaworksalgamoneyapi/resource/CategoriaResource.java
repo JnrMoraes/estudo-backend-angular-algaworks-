@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 
-//Resource esta sendo o controller
+//Resource is controller here
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaResource {
@@ -38,7 +38,7 @@ public class CategoriaResource {
 
         return ResponseEntity.created(uri).body(categoriaSalva);
     }
-
+//Manage a not created categoria field
     @GetMapping("/{codigo}")
     public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
         return this.categoriaRepository.findById(codigo)
