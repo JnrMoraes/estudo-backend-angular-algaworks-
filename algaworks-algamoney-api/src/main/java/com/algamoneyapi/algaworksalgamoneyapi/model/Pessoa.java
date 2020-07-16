@@ -17,12 +17,15 @@ public class Pessoa {
     @Embedded
     private Endereco endereco;
 
+    @NotNull
     private Boolean ativo;
 
-    public Pessoa(String nome, Endereco endereco, Boolean ativo) {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.ativo = ativo;
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -56,6 +59,7 @@ public class Pessoa {
 
         Pessoa pessoa = (Pessoa) o;
 
+        if (getCodigo() != null ? !getCodigo().equals(pessoa.getCodigo()) : pessoa.getCodigo() != null) return false;
         if (getNome() != null ? !getNome().equals(pessoa.getNome()) : pessoa.getNome() != null) return false;
         if (getEndereco() != null ? !getEndereco().equals(pessoa.getEndereco()) : pessoa.getEndereco() != null)
             return false;
@@ -64,7 +68,8 @@ public class Pessoa {
 
     @Override
     public int hashCode() {
-        int result = getNome() != null ? getNome().hashCode() : 0;
+        int result = getCodigo() != null ? getCodigo().hashCode() : 0;
+        result = 31 * result + (getNome() != null ? getNome().hashCode() : 0);
         result = 31 * result + (getEndereco() != null ? getEndereco().hashCode() : 0);
         result = 31 * result + (getAtivo() != null ? getAtivo().hashCode() : 0);
         return result;

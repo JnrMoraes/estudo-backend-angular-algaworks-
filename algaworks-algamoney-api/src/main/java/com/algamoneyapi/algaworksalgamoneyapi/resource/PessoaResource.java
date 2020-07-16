@@ -1,25 +1,27 @@
 package com.algamoneyapi.algaworksalgamoneyapi.resource;
 
+import com.algamoneyapi.algaworksalgamoneyapi.event.RecursoCriadoEvent;
 import com.algamoneyapi.algaworksalgamoneyapi.model.Pessoa;
 import com.algamoneyapi.algaworksalgamoneyapi.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.net.URI;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/pessoas")
 public class PessoaResource {
 
     @Autowired
     private PessoaRepository pessoaRepository;
+
+    @Autowired
+    private ApplicationEventPublisher publisher;
 
     @GetMapping
     public List<Pessoa>listPessoa(){
@@ -27,21 +29,24 @@ public class PessoaResource {
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> createPessoas(Pessoa pessoa, HttpServletResponse response){
+    public ResponseEntity<Pessoa> createPessoas(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
         Pessoa pessoaCreated =  pessoaRepository.save(pessoa);
-
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{pessoas}")
-                .buildAndExpand().toUri();
-        response.setHeader("Location", uri.toASCIIString());
-
-        return ResponseEntity.created(uri).body(pessoaCreated);
+        publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaCreated.getCodigo()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaCreated);
     }
 
-    @GetMapping("/{pessoas}")
-    public ResponseEntity<Pessoa> findByPessoaCode(Long codigo){
+    @GetMapping("/{codigo}")
+    public ResponseEntity<Pessoa> findByPessoaCode(@PathVariable Long codigo){
         return this.pessoaRepository.findById(codigo)
-                .map(pessoa -> ResponseEntity.ok(pessoa))
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePessoa(@PathVariable Long codigo){
+        this.pessoaRepository.deleteById(codigo);
+    }
+
 
 }
