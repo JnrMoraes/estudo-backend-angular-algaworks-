@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.algamoneyapi.algaworksalgamoneyapi.service.PessoaService;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -23,13 +24,16 @@ public class PessoaResource {
     @Autowired
     private ApplicationEventPublisher publisher;
 
+    @Autowired
+    private PessoaService pessoaService;
+
     @GetMapping
     public List<Pessoa>listPessoa(){
         return pessoaRepository.findAll();
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> createPessoas(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
+    public ResponseEntity<Pessoa> createPessoa(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
         Pessoa pessoaCreated =  pessoaRepository.save(pessoa);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaCreated.getCodigo()));
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaCreated);
@@ -48,5 +52,14 @@ public class PessoaResource {
         this.pessoaRepository.deleteById(codigo);
     }
 
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Pessoa> uodatePessoa(@PathVariable  Long codigo, @Valid @RequestBody Pessoa pessoa){
+        return ResponseEntity.ok(pessoaService.update(codigo,pessoa));
+        }
 
+    @PutMapping("/{codigo}/ativo")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePropertAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo){
+        pessoaService.updatePropertAtivo(codigo,ativo);
+    }
 }
