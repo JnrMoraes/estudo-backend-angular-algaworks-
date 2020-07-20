@@ -22,15 +22,13 @@ public class PessoaService {
 
     }
 
-
-
     public void updatePropertAtivo(Long codigo, Boolean ativo) {
         Pessoa pessoaSaved = findPessoaByCodigo(codigo);
         pessoaSaved.setAtivo(ativo);
         pessoaRepository.save(pessoaSaved);
     }
 
-    private Pessoa findPessoaByCodigo(Long codigo) {
+    public Pessoa findPessoaByCodigo(Long codigo) {
         Pessoa pessoaSaved = pessoaRepository.findById(codigo)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
         if(pessoaSaved == null){

@@ -1,16 +1,22 @@
 package com.algamoneyapi.algaworksalgamoneyapi.resource;
 
 import com.algamoneyapi.algaworksalgamoneyapi.event.RecursoCriadoEvent;
+import com.algamoneyapi.algaworksalgamoneyapi.exceptionhandler.AlgamoneyExceptionHandler;
 import com.algamoneyapi.algaworksalgamoneyapi.model.Lancamento;
 import com.algamoneyapi.algaworksalgamoneyapi.repository.LancamentoRepository;
+import com.algamoneyapi.algaworksalgamoneyapi.service.LancamentoService;
+import com.algamoneyapi.algaworksalgamoneyapi.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -18,10 +24,16 @@ import java.util.List;
 public class LancamentoResource {
 
     @Autowired
+    private LancamentoService lancamentoService;
+
+    @Autowired
     private LancamentoRepository lancamentoRepository;
 
     @Autowired
     private ApplicationEventPublisher publisher;
+
+    @Autowired
+    private MessageSource messageSource;
 
   @GetMapping
     public List<Lancamento> listAllLancamento(){
@@ -38,10 +50,21 @@ public class LancamentoResource {
 
     @PostMapping
     public ResponseEntity<Lancamento> createLancamento(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response){
-      Lancamento saveLancamento = lancamentoRepository.save(lancamento);
+      Lancamento saveLancamento = lancamentoService.saveLancamentoService(lancamento);
       publisher.publishEvent( new RecursoCriadoEvent(this, response, saveLancamento.getCodigo()));
       return ResponseEntity.status(HttpStatus.CREATED).body(saveLancamento);
 
     }
+
+    @ExceptionHandler({PessoaInexistenteOuInativaException.class})
+    public ResponseEntity<Object> handlePessoaInexistenteOuInativaException(PessoaInexistenteOuInativaException ex){
+        String mensagemUsuario =  messageSource.getMessage("pessoa.inativa-ou-inexitente", null, LocaleContextHolder.getLocale());
+        String mensagemDesenvolvedor = ex.toString();
+        List<AlgamoneyExceptionHandler.Erro> erros = Arrays.asList(new AlgamoneyExceptionHandler.Erro(mensagemUsuario, mensagemDesenvolvedor));
+        return ResponseEntity.badRequest().body(erros);
+    }
+
+
+
 
 }
