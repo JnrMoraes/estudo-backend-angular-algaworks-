@@ -70,6 +70,13 @@
 			<version>3.4</version>
 		</dependency>
 
+<!-- 		Metamodel-->
+<!--inteliij process to works with metamodel https://intellij-support.jetbrains.com/hc/en-us/community/posts/206842215-Hibernate-JPA-2-Metamodel-generation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
