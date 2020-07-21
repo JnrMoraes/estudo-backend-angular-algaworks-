@@ -53,7 +53,7 @@ public class PessoaResource {
     }
 
     @PutMapping("/{codigo}")
-    public ResponseEntity<Pessoa> uodatePessoa(@PathVariable  Long codigo, @Valid @RequestBody Pessoa pessoa){
+    public ResponseEntity<Pessoa> updatePessoa(@PathVariable  Long codigo, @Valid @RequestBody Pessoa pessoa){
         return ResponseEntity.ok(pessoaService.update(codigo,pessoa));
         }
 
