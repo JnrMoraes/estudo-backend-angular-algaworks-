@@ -19,6 +19,7 @@ public class LancamentoService {
     @Autowired
     private LancamentoRepository lancamentoRepository;
 
+// ver pq não retorno a exception 5.6. Regra para não salvar pessoa inativa
     public Lancamento saveLancamentoService(Lancamento lancamento) {
 
         Optional<Pessoa> pessoa = pessoaRepository.findById(lancamento.getPessoa().getCodigo());
