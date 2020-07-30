@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
-
-//Resource is controller here
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaResource {
