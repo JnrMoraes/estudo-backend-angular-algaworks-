@@ -20,8 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="553ac2ae-0e84-4ef0-b059-fa69b7eb5c5c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/curso-jsf-e-primefaces-essencial.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/AuthorizationServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/AuthorizationServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/ResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/ResourceServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/CategoriaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/CategoriaResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/LancamentoResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/LancamentoResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/PessoaResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/PessoaResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/security/AppDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/security/AppDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/security/util/GerdorDeSenha.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/security/util/GerdorDeSenha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +87,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="139" y="25" key="SettingsEditor" timestamp="1597413233021">

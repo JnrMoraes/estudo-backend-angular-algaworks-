@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.algamoneyapi.algaworksalgamoneyapi.service.PessoaService;
 
@@ -33,6 +34,7 @@ public class PessoaResource {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     public ResponseEntity<Pessoa> createPessoa(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
         Pessoa pessoaCreated =  pessoaRepository.save(pessoa);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaCreated.getCodigo()));
@@ -40,6 +42,7 @@ public class PessoaResource {
     }
 
     @GetMapping("/{codigo}")
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and #oauth2.hasScope('read')")
     public ResponseEntity<Pessoa> findByPessoaCode(@PathVariable Long codigo){
         return this.pessoaRepository.findById(codigo)
                 .map(ResponseEntity::ok)
@@ -48,17 +51,20 @@ public class PessoaResource {
 
     @DeleteMapping("/{codigo}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAuthority('ROLE_REMOVER_PESSOA') and #oauth2.hasScope('write')")
     public void deletePessoa(@PathVariable Long codigo){
         this.pessoaRepository.deleteById(codigo);
     }
 
     @PutMapping("/{codigo}")
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     public ResponseEntity<Pessoa> updatePessoa(@PathVariable  Long codigo, @Valid @RequestBody Pessoa pessoa){
         return ResponseEntity.ok(pessoaService.update(codigo,pessoa));
         }
 
     @PutMapping("/{codigo}/ativo")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and #oauth2.hasScope('write')")
     public void updatePropertAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo){
         pessoaService.updatePropertAtivo(codigo,ativo);
     }
