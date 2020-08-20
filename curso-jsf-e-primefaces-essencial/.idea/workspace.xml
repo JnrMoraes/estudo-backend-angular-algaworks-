@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="553ac2ae-0e84-4ef0-b059-fa69b7eb5c5c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/property/AlgamoneyApiProperty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/resources/aplication-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/AlgaworksAlgamoneyApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/AlgaworksAlgamoneyApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/cors/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/cors/CorsFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/TokenResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/resource/TokenResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/token/RefreshTokenPostProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/token/RefreshTokenPostProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/property/AlgamoneyApiProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/config/property/AlgamoneyApiProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/repository/projection/ResumoLancamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/java/com/algamoneyapi/algaworksalgamoneyapi/repository/projection/ResumoLancamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/resources/aplication-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../algaworks-algamoney-api/src/main/resources/aplication-prod.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
