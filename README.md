@@ -1,2 +1,2 @@
 # estudo-backend-angular-algaworks-
-Estudo do backend efront em angular
+Estudo do backend e front em angular
